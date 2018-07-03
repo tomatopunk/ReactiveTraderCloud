@@ -18,8 +18,8 @@ export interface ShellProps {
   reconnect: () => void
 }
 
-/* const appVersion: string = process.env.REACT_APP_VERSION // version from package.json exported in webpack.config.js
- */
+const appVersion: string = process.env.REACT_APP_VERSION // version from package.json exported in webpack.config.js
+
 const Shell: React.SFC<ShellProps & { environment: Environment }> = ({
   sessionExpired,
   showSplitter,
@@ -31,12 +31,12 @@ const Shell: React.SFC<ShellProps & { environment: Environment }> = ({
       shell__browser_wrapper: !environment.isRunningDesktop
     })}
   >
-    {/* <div className="shell__splash">
+    <div className="shell__splash">
       <span className="shell__splash-message">
         {appVersion}
         <br />Loading...
       </span>
-    </div> */}
+    </div>
     <div className="shell__container">
       <Modal shouldShow={sessionExpired} title="Session expired">
         <div>
