@@ -71,7 +71,7 @@ const appBootstrapper = () => {
   })
 }
 
-const runBootstrapper = location.pathname === '/' && location.hash.length === 0
+const runBootstrapper = true //location.pathname === '/' && location.hash.length === 0
 
 // if we're not the root we (perhaps a popup) we never re-run the bootstrap logic
 

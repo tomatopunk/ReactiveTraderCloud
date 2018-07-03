@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Link, RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps } from 'react-router-dom'
 import ConnectedSpotTileContainer from '../spotTile/SpotTileContainer'
 
 interface SingleTileParams {
@@ -7,10 +7,9 @@ interface SingleTileParams {
 }
 
 const SingleTile: React.SFC<RouteComponentProps<SingleTileParams>> = ({ match }) => (
-  <div className="workspace-region__item">
+  <React.Fragment>
     <ConnectedSpotTileContainer id={match.params.currencyPair} onPopoutClick={() => {}} tornOff={true} />
-    <Link to="/">Bring me home</Link>
-  </div>
+  </React.Fragment>
 )
 
 export default SingleTile

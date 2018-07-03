@@ -63,6 +63,9 @@ class SpotTileContainer extends React.Component<SpotTileContainerProps> {
       displayCurrencyChart,
       tornOff
     } = this.props
+    if (!spotTilesData || !currencyPair) {
+      return null
+    }
     const spotTitle = spotRegionSettings(id).title
     return (
       <SpotTile

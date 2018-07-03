@@ -1,15 +1,23 @@
 import * as React from 'react'
-import { Link, RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps } from 'react-router-dom'
 import { BlotterContainer } from '../blotter'
 
-const BlotterLayout: React.SFC<RouteComponentProps<any>> = ({ match }) => (
+const BlotterLayout: React.SFC<RouteComponentProps<any>> = () => (
   <React.Fragment>
-    <div className="shell__blotter-container">
-      <div className="shell__blotter">
-        <BlotterContainer onPopoutClick={() => {}} tornOff={true} />
-      </div>
+    <div
+      style={{
+        width: '100%',
+        height: 'auto',
+        overflow: 'auto',
+        position: 'absolute',
+        top: '20px',
+        left: '0',
+        bottom: '0',
+        right: '0'
+      }}
+    >
+      <BlotterContainer onPopoutClick={() => {}} tornOff={true} />
     </div>
-    <Link to="/">Bring me home</Link>
   </React.Fragment>
 )
 

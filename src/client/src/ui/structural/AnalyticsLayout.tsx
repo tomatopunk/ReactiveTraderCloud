@@ -1,11 +1,10 @@
 import * as React from 'react'
-import { Link, RouteComponentProps } from 'react-router-dom'
+import { RouteComponentProps } from 'react-router-dom'
 import SidebarRegionContainer from '../sidebar'
 
-const AnalyticsLayout: React.SFC<RouteComponentProps<any>> = ({ match }) => (
+const AnalyticsLayout: React.SFC<RouteComponentProps<any>> = () => (
   <React.Fragment>
     <SidebarRegionContainer onPopoutClick={() => {}} tornOff={true} />
-    <Link to="/">Bring me home</Link>
   </React.Fragment>
 )
 
