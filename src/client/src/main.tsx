@@ -1,16 +1,18 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 import { Provider } from 'react-redux'
+import { HashRouter as Router } from 'react-router-dom'
 import { timer } from 'rxjs'
 import { createApplicationServices } from './applicationServices'
 import { getEnvVars } from './config/config'
 import configureStore from './configureStore'
 import { ConnectionActions } from './operations/connectionStatus'
+import Routes from './Routes'
 import { FakeUserRepository } from './services'
 import { OpenFin } from './services/openFin'
 import { AutobahnConnectionProxy, logger } from './system'
 import { User } from './types'
-import { OpenFinProvider, ShellContainer } from './ui/shell'
+import { OpenFinProvider } from './ui/shell'
 import { EnvironmentProvider } from './ui/shell/EnvironmentProvider'
 
 const log = logger.create('Application Service')
@@ -46,15 +48,17 @@ const appBootstrapper = () => {
 
   ReactDOM.render(
     <Provider store={store}>
-      <EnvironmentProvider value={environmentContext}>
-        {openFin.isRunningInOpenFin ? (
-          <OpenFinProvider openFin={openFin}>
-            <ShellContainer />
-          </OpenFinProvider>
-        ) : (
-          <ShellContainer />
-        )}
-      </EnvironmentProvider>
+      <Router>
+        <EnvironmentProvider value={environmentContext}>
+          {openFin.isRunningInOpenFin ? (
+            <OpenFinProvider openFin={openFin}>
+              <Routes />
+            </OpenFinProvider>
+          ) : (
+            <Routes />
+          )}
+        </EnvironmentProvider>
+      </Router>
     </Provider>,
     document.getElementById('root')
   )
